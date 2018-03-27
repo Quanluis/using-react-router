@@ -20,7 +20,6 @@ class App extends Component {
         <Route path = "/login" component={LoginPage} />
         <Route path = '/signup' exact component = {SignupPage} />
         <Route path = '/signup/:coupon' component = {SignupPage} />
-      
       </div>
     );
   }

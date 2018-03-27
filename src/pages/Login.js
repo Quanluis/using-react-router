@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { login } from '../Store'
 
 
 
@@ -16,11 +18,16 @@ class Login extends Component {
                         <input type="password" placeholder="Password..." required />
                     </div>
                     <button>Login</button>
-
                 </form>
             </div>
         )
     }
 }
 
-export default Login;
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+    login: (username, password) => dispatch(login(username, password))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

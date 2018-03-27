@@ -1,6 +1,7 @@
 import React  from 'react';
 import './Navigation.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const Navigation = props => (
     <nav className='navbar'>
@@ -17,5 +18,11 @@ const Navigation = props => (
         </ul>
     </nav>
 );
+const mapStateToProps = state => state;
 
-export default Navigation;
+const MapDispatchToProps = dispatch => ({
+    dispatch
+})
+
+
+export default connect(mapStateToProps, MapDispatchToProps)(Navigation);

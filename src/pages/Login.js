@@ -9,7 +9,10 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={e => e.preventDefault()}>
+                <form onSubmit={e => {
+                    e.preventDefault();
+                    this.props.login('luis', '1234')
+                }}>
                     <h2>Login:</h2>
                     <div>
                         <input type="email" placeholder="Email..." required />

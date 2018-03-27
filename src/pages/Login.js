@@ -6,20 +6,45 @@ import { login } from '../Store'
 
 
 class Login extends Component {
+    constructor(){
+        super();
+        this.state = {
+            username: '',
+            password: ''
+
+        }
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(e){
+        const {username, password} = this.state;
+        e.preventDefault();
+        this.props.login(username, password)
+        this.props.history.push('/');
+    }
+
+
     render() {
         return (
             <div>
-                <form onSubmit={e => {
-                    e.preventDefault();
-                    this.props.login('luis', '1234')
-                    this.props.history.push('/'); //send me home
-                }}>
+                <form onSubmit={this.handleSubmit}>
                     <h2>Login:</h2>
                     <div>
-                        <input type="email" placeholder="Email..." required />
+                        <input type="email"
+                         placeholder="Email..."
+                         value = {this.state.username}
+                         onChange = { e => this.setState({username: e.target.value})}
+                          required 
+                          />
                     </div>
                     <div>
-                        <input type="password" placeholder="Password..." required />
+                        <input type="password"
+                         placeholder="Password..."
+                         value = {this.state.password}
+                         onChange = { e=> this.setState({password: e.target.value})}
+                          required 
+                          
+                          />
                     </div>
                     <button>Login</button>
                 </form>

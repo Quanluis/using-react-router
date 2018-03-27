@@ -12,6 +12,7 @@ class Login extends Component {
                 <form onSubmit={e => {
                     e.preventDefault();
                     this.props.login('luis', '1234')
+                    this.props.history.push('/'); //send me home
                 }}>
                     <h2>Login:</h2>
                     <div>

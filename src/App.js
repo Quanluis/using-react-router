@@ -2,7 +2,7 @@ import React, {
   Component
 } from 'react';
 import './App.css';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 
 import LoginPage from './pages/Login';
 import HomePage from './pages/Home';
@@ -16,10 +16,13 @@ class App extends Component {
     return (
       <div>
         <Navigation />
-        <Route path = '/' exact component = {HomePage} />
-        <Route path = "/login" component={LoginPage} />
-        <Route path = '/signup' exact component = {SignupPage} />
-        <Route path = '/signup/:coupon' component = {SignupPage} />
+        <Switch>
+          <Route path = '/' exact component = {HomePage} />
+          <Route path = "/login" exact component={LoginPage} />
+          <Route path = '/signup' exact component = {SignupPage} />
+          <Route path = '/signup/:coupon' component = {SignupPage} />
+          <Redirect from = '/login/*' to = '/login' />
+        </Switch>
       </div>
     );
   }
